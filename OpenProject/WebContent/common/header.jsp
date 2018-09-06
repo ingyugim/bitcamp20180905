@@ -1,3 +1,4 @@
+<%@page import="org.apache.catalina.Session"%>
 <%@ page language="java" contentType="text/html; charset=EUC-KR"
     pageEncoding="EUC-KR"%>
 <!DOCTYPE html>
@@ -6,12 +7,37 @@
 <meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
 <title>Header</title>
 <link rel="stylesheet" href="css/default.css">
+	<style type="text/css">
+	#memberPhoto {
+	background-image: url('images/images.jpg');
+	background-size: 100%;
+	width: 150px;
+	height: 150px;
+	border: 1px solid #222222;
+	border-radius: 75px;
+}
+	</style>
 </head>
 <body>
 	<h1 class="title">OpenProject</h1>
 	<ul id="gnb">
+		<li><a href="memberRegForm.jsp">메인</a></li>
 		<li><a href="memberRegForm.jsp">회원가입</a></li>
+		
+		<% 
+		
+		String sessionId = (String)request.getSession(false).getAttribute("userId");
+		String sessionName = (String)request.getSession(false).getAttribute("userName");
+		
+		if(sessionId == null){
+		
+		%>
 		<li><a href="loginForm.jsp">로그인</a></li>
+		<%}else{ %>
+		<li><a href="logout.jsp">로그아웃</a></li>
+		<%
+		} 
+		%>
 		<li><a href="myPage.jsp">마이페이지</a></li>
 		<li><a href="memberList.jsp">회원 리스트</a></li>
 
