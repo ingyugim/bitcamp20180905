@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=EUC-KR"
 	pageEncoding="EUC-KR"%>
+	<% request.setCharacterEncoding("EUC-KR"); %>
 <%@ include file="common/header.jsp"%>
 
 <!--#:현재위치-->

@@ -1,12 +1,14 @@
 <%@ page language="java" contentType="text/html; charset=EUC-KR"
 	pageEncoding="EUC-KR"%>
 <!DOCTYPE html>
+<% request.setCharacterEncoding("EUC-KR"); %>
 <%@ include file="common/header.jsp"%>
 
 <% 
 	request.setCharacterEncoding("utf-8");
-	//String userId0 = (String)request.getSession(false).getAttribute("userId");
-	if(sessionId == null){
+	/* String userId0 = (String)request.getSession(false).getAttribute("userId"); */
+	
+	if(sessionId==null){
 		%>
 		<script>
 			alert('로그인 후 가능한 서비스 입니다.');
@@ -28,11 +30,11 @@
 	<table>
 		<tr>
 			<td>아이디(이메일)</td>
-			<td><%= sessionId %></td>
+			<td><%= memberinfo_mb.getUserId() %></td>
 		</tr>
 		<tr>
 			<td>이름</td>
-			<td><%= sessionName %></td>
+			<td><%= memberinfo_mb.getUserName() %></td>
 		</tr>
 		<tr>
 			<td>사진</td>
