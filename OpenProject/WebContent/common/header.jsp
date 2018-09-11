@@ -23,7 +23,7 @@
 <body>
 	<h1 class="title">OpenProject</h1>
 	<ul id="gnb">
-		<li><a href="memberRegForm.jsp">메인</a></li>
+		<li><a href="#">메인</a></li>
 		<li><a href="memberRegForm.jsp">회원가입</a></li>
 		
 		<% 
@@ -33,14 +33,26 @@
 		Object memberinfo_obj = session.getAttribute("MemberInfo");
 		MemberInfo memberinfo_mb = (MemberInfo)memberinfo_obj;
 		
+		/*The Data from memberRegForm*/
+		String userId = request.getParameter("memberRegForm_userId");
+		String userPw = request.getParameter("memberRegForm_password");
+		String userName = request.getParameter("memberRegForm_userName");
 		
-		request.setCharacterEncoding("utf-8");
-		String userId = request.getParameter("userId");
-		String userPw = request.getParameter("password");
-		String userName = request.getParameter("userName");
+		/*The Data from loginForm*/
+		String loginForm_userId = request.getParameter("loginForm_userId");
+		String loginForm_userPw = request.getParameter("loginForm_password");
+		String loginForm_checkbox = request.getParameter("login_checkbox");
+		String checkedMark = "";
+		
+		if(loginForm_checkbox!=null&&loginForm_checkbox.equals("on")){
+			Cookie cb_cookie = new Cookie("cookiebox","");
+		}else{
+			
+		}
+		
 		%>
 		
-		<%if(sessionId == null){%>		
+		<%if(memberinfo_mb == null){%>		
 		<li><a href="loginForm.jsp">로그인</a></li>
 		<%}else{ %>
 		<li><a href="logout.jsp">로그아웃</a></li>
