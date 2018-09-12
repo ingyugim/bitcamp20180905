@@ -2,15 +2,14 @@
 	pageEncoding="EUC-KR"%>
 <!DOCTYPE html>
 <%
-	request.setCharacterEncoding("EUC-KR");
+	request.setCharacterEncoding("utf-8");
 %>
 <%@ include file="common/header.jsp"%>
 
 <%
-	request.setCharacterEncoding("utf-8");
 	/* String userId0 = (String)request.getSession(false).getAttribute("userId"); */
 
-	if (memberinfo_mb == null) {
+	if (session.getAttribute("sessionId") == null) {
 %>
 <script>
 	alert('로그인 후 가능한 서비스 입니다.');
@@ -28,7 +27,7 @@
 	<div id="memberPhoto"></div>
 </center>
 <hr>
-<form>
+<%-- <form>
 	<table>
 		<tr>
 			<td>아이디(이메일)</td>
@@ -43,7 +42,7 @@
 			<td><%=memberinfo_mb.getPassword()%></td>
 		</tr>
 	</table>
-</form>
+</form> --%>
 <hr>
 <!-- 
 		String userId = request.getParameter("userId");
@@ -57,13 +56,13 @@
 			<td>입력 ID</td>
 			<td><%=loginForm_userId%></td>
 			<td>세션 ID</td>
-			<td><%=memberinfo_mb.getUserId()%></td>
+			<td><%=sessionId%></td>
 		</tr>
 		<tr>
 			<td>입력 Password</td>
 			<td><%=loginForm_userPw %></td>
 			<td>세션 Password</td>
-			<td><%=memberinfo_mb.getPassword() %></td>
+			<td><%=sessionName%></td>
 		</tr>
 	</table>
 </div>

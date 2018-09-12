@@ -1,3 +1,4 @@
+<%@page import="java.util.ArrayList"%>
 <%@page import="member.model.MemberInfo"%>
 <%@page import="org.apache.catalina.Session"%>
 <%@ page language="java" contentType="text/html; charset=EUC-KR"
@@ -30,8 +31,20 @@
 		String sessionId = (String)request.getSession(false).getAttribute("sessionId");
 		String sessionName = (String)request.getSession(false).getAttribute("sessionName");
 		
+		
+		/*세션 속성으로 memberinfo 객체 불러와서 memberinfo 인스턴스 생성*/
 		Object memberinfo_obj = session.getAttribute("MemberInfo");
 		MemberInfo memberinfo_mb = (MemberInfo)memberinfo_obj;
+
+		/*Application 속성으로 memberinfo 객체 불러와서 memberinfo 인스턴스 생성*/
+		Object memberinfo_obj2 = application.getAttribute("MemberInfo");
+		MemberInfo memberinfo_ap = (MemberInfo)memberinfo_obj2;
+		
+		/*Application에 객체를 가진 ArrayList타입의 memberinfo_list를 선언*/
+		Object memberinfo_obj_ap = application.getAttribute("memberList");
+		ArrayList<MemberInfo> memberinfo_list = (ArrayList<MemberInfo>)memberinfo_obj_ap;
+		
+		
 		
 		/*The Data from memberRegForm*/
 		String userId = request.getParameter("memberRegForm_userId");
@@ -49,10 +62,9 @@
 		}else{
 			
 		}
-		
 		%>
 		
-		<%if(memberinfo_mb == null){%>		
+		<%if(sessionId == null){%>		
 		<li><a href="loginForm.jsp">로그인</a></li>
 		<%}else{ %>
 		<li><a href="logout.jsp">로그아웃</a></li>
