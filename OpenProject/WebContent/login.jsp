@@ -10,8 +10,9 @@
 <h2>login</h2>
 <hr>
 <%
-	if((loginForm_userId!=null)&&(loginForm_userPw!=null)){
+	if((loginForm_userId!=null)&&(loginForm_userPw!=null) && (memberinfo_list != null)){
 		for(int i =0 ; i<memberinfo_list.size(); i++){
+		 
 			if(  (loginForm_userId.equals(memberinfo_list.get(i).getUserId()) )&&
 				 (loginForm_userPw.equals(memberinfo_list.get(i).getPassword())) ){
 		
@@ -26,10 +27,12 @@
 			
 				}else{%>
 				<h5>아이디 또는 비밀번호가 틀립니다.</h5>
+				response.sendRedirect("myPage.jsp");
 				<%
 			}
 		}
-	}else if((loginForm_userId==null)||(loginForm_userPw==null)){//end of if((loginForm_userId!=null)&&(loginForm_userPw!=null))%>
+	}else {//end of if((loginForm_userId!=null)&&(loginForm_userPw!=null))%>
+	
 	alert("비밀번호와 아이디를 입력하세요");
 	<%}
 %>
@@ -63,7 +66,12 @@
 		<td>Name</td>
 		<td>Management</td>
 	</tr>
-	<% for(int i = 0 ; i<memberinfo_list.size() ; i++){ %>
+	
+	<% 
+	if(memberinfo_list != null){
+		
+	
+	for(int i = 0 ; i<memberinfo_list.size() ; i++){ %>
 	<tr>
 		<td><%=i+1%></td>
 		<td><%=memberinfo_list.get(i).getUserId()%></td>
@@ -71,7 +79,9 @@
 		<td><%=memberinfo_list.get(i).getUserName()%></td>
 		<td><a href="memberEdit.jsp">edit</a>_<a href="memberDelete.jsp">delete</a></td>
 	</tr>
-	<%}%>
+	<%	
+		}
+	}%>
 	
 </table>
 

@@ -36,15 +36,14 @@
 		Object memberinfo_obj = session.getAttribute("MemberInfo");
 		MemberInfo memberinfo_mb = (MemberInfo)memberinfo_obj;
 
-		/*Application 속성으로 memberinfo 객체 불러와서 memberinfo 인스턴스 생성*/
+		/*Application 속성으로 memberinfo   객체 불러와서 memberinfo 인스턴스 생성*/
 		Object memberinfo_obj2 = application.getAttribute("MemberInfo");
 		MemberInfo memberinfo_ap = (MemberInfo)memberinfo_obj2;
 		
-		/*Application에 객체를 가진 ArrayList타입의 memberinfo_list를 선언*/
+		/*Application을 통해 객체를 전달받은 ArrayList타입의 memberinfo_list를 선언*/
 		Object memberinfo_obj_ap = application.getAttribute("memberList");
-		ArrayList<MemberInfo> memberinfo_list = (ArrayList<MemberInfo>)memberinfo_obj_ap;
-		
-		
+		ArrayList<MemberInfo> memberinfo_list = (ArrayList<MemberInfo>)memberinfo_obj_ap;			
+
 		
 		/*The Data from memberRegForm*/
 		String userId = request.getParameter("memberRegForm_userId");
@@ -57,11 +56,6 @@
 		String loginForm_checkbox = request.getParameter("login_checkbox");
 		String checkedMark = "";
 		
-		if(loginForm_checkbox!=null&&loginForm_checkbox.equals("on")){
-			Cookie cb_cookie = new Cookie("cookiebox","");
-		}else{
-			
-		}
 		%>
 		
 		<%if(sessionId == null){%>		

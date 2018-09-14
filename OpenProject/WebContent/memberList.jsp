@@ -23,6 +23,8 @@
 	String id = "";
 	String pw = "";
 	String name = "";
+	if(memberinfo_list != null){
+		
 	
 	for(int i =0 ; i<memberinfo_list.size(); i++){
 	/* id = ((MemberInfo)memberinfo_list.get(i)).getUserId();
@@ -34,8 +36,14 @@
 			<td><%=memberinfo_list.get(i).getUserId()%></td>
 			<td><%=memberinfo_list.get(i).getPassword()%></td>
 			<td><%=memberinfo_list.get(i).getUserName()%></td>
-			<td><a href="memberEdit.jsp">수정</a> <a href="memberDelete.jsp">삭제</a></td>
+			<td>
+			<a href="memberEdit.jsp">수정</a> 
+			<a href="memberDelete.jsp">삭제</a>
+			</td>
 		</tr>
-	<%}//end of for%>					
+	<%
+		}//end of for
+	}//end of if
+	%>					
 	</table>
 </form>
