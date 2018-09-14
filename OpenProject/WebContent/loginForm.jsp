@@ -5,6 +5,10 @@
 
 <%@ include file="common/header.jsp"%>
 
+<%
+	/*Take the Cookie when checkbox will checked.*/
+	
+%>
 <!--#:현재위치-->
 <h2>loginForm</h2>
 <hr>
@@ -22,7 +26,7 @@
 			<td colspan="2">
 				<center>
 					<input type="submit" value="Login">
-					아이디기억<input type="checkbox" name="login_checkbox" value="checkbox"<%=checkedMark%>  >
+					아이디기억<input type="checkbox" name="loginForm_checkbox" >
 				</center>
 			</td>
 		</tr>

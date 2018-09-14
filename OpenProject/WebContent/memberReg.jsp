@@ -82,7 +82,7 @@
 					alert('이미 사용중인 아이디 입니다.');
 					</script><%
 					//memberList = new ArrayList<MemberInfo>();
-					break;
+					
 				}else{
 					//1.1	if문 조건 id 중복x
 					//application속성 memberList를 갖고와서 memberList에 대입(어플리케이션에 있는 기존 리스트를 가져와서 리스트에 추가)

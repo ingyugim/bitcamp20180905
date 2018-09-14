@@ -21,12 +21,6 @@
 }
 	</style>
 </head>
-<body>
-	<h1 class="title">OpenProject</h1>
-	<ul id="gnb">
-		<li><a href="#">메인</a></li>
-		<li><a href="memberRegForm.jsp">회원가입</a></li>
-		
 		<% 
 		String sessionId = (String)request.getSession(false).getAttribute("sessionId");
 		String sessionName = (String)request.getSession(false).getAttribute("sessionName");
@@ -57,6 +51,16 @@
 		String checkedMark = "";
 		
 		%>
+<body>
+	<h1 class="title">OpenProject</h1>
+	<ul id="gnb">
+		<li><a href="#">메인</a></li>
+		<%if(sessionId == null){%>
+		<li><a href="memberRegForm.jsp">회원가입</a></li>
+		<%}else{ %>
+		<li><%=memberinfo_ap.getUserName()%>님 반갑습니다.</li>
+		<%}	%>
+		
 		
 		<%if(sessionId == null){%>		
 		<li><a href="loginForm.jsp">로그인</a></li>

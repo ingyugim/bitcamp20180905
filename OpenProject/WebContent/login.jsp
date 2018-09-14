@@ -10,6 +10,24 @@
 <h2>login</h2>
 <hr>
 <%
+	/*Checkbox 구현*/
+
+	//체크박스 값을 갖고온다.
+	String login_checkbox = request.getParameter("loginForm_checkbox");
+	
+	//1. Checkbox is checked : login_checkbox != null
+	//1.1 쿠키생성
+	//1.1 response에 쿠키 추가
+	//2. Checkbox is not checked : login_checkbox == null
+	if(login_checkbox != null){
+		%><script>alert('Checkbox is checked')</script><%
+		Cookie cookie = new Cookie("checkbox","checkbox");
+		response.addCookie(cookie);
+	}else if(login_checkbox == null){
+		%><script>alert('Checkbox is not checked')</script><%
+	}
+
+	/*Application에 저장된 아이디와 비밀번호 비교 후 로그인*/
 	if((loginForm_userId!=null)&&(loginForm_userPw!=null) && (memberinfo_list != null)){
 		for(int i =0 ; i<memberinfo_list.size(); i++){
 		 
@@ -27,13 +45,14 @@
 			
 				}else{%>
 				<h5>아이디 또는 비밀번호가 틀립니다.</h5>
-				response.sendRedirect("myPage.jsp");
+				<script>alert('Please input your id or password')
+				history.go(-1);				
+				</script>
 				<%
 			}
 		}
 	}else {//end of if((loginForm_userId!=null)&&(loginForm_userPw!=null))%>
-	
-	alert("비밀번호와 아이디를 입력하세요");
+	<script>alert('Please input your id or password (id, pw is null)')</script>
 	<%}
 %>
 
