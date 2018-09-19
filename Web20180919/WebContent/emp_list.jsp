@@ -11,6 +11,8 @@
 <title>Insert title here</title>
 </head>
 <body>
+<h1>사원리스트</h1>
+<h3><a href="empRegForm.jsp">사원 등록<a></a></h3>
 	<table border="1">
 		<tr>
 			<td>사원번호</td>
@@ -46,7 +48,9 @@
 			<td>사원번호:<%=rs.getInt("empno") %>,<%=rs.getInt(1) %></td>
 			<td>사원이름:<%=rs.getString("ename") %> ,<%=rs.getString(2) %></td>
 			<td>직급:<%=rs.getString("job") %>,<%=rs.getString(3) %></td>
-			<td><A href="editForm.jsp?empno=<%=rs.getInt("empno") %>">수정</A><A>삭제</A></td>
+			<td>
+				<A href="editForm.jsp?empno=<%=rs.getInt("empno") %>">수정</A>
+				<A href="delete.jsp?empno=<%=rs.getInt("empno") %>"> 삭제</A></td>
 		</tr>
 				
 				<%
@@ -60,7 +64,6 @@
 				
 				<%
 			}
-			
 			
 			/*3.DataBase작업*/
 			System.out.println("Success Connection to DataBase");
